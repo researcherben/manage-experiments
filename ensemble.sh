@@ -27,6 +27,9 @@ else
   iterations="$4"
 fi
 
+# maximum number of processes is
+# cat /proc/sys/kernel/pid_max
+
 for ((i = 1; i <= "${iterations}"; i++ )); do
-   ./measure.sh "${first}" "${second}" "${third}"
+   (./measure.sh "${first}" "${second}" "${third}") &
 done
